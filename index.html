@@ -1,72 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<script>
-		function myFunction() {
-        	let cbt_responses = document.getElementById("cbt_int").options
+  <head>
+	<title>Treatment Note</title>
+    <script>
+      function myFunction() {
+        let cbt_responses = document.getElementById("cbt_int").options
         let cbt_output = ""
         let is_cbt = document.getElementById("cbt").checked
-        
         if (is_cbt) {
-        
-        let cbt_text = document.getElementById("cbt").labels[0].textContext
-        
+          let cbt_text = document.getElementById("cbt").labels[0].textContent
           for (let i = 0; i < cbt_responses.length; i++) {
-              if (cbt_responses[i].selected) {
-                  cbt_output += cbt_responses[i].text + ", "
-              }   	
+            if (cbt_responses[i].selected) {
+              cbt_output += cbt_responses[i].text + ", "
+            }
           }
-          
-          hi = cbt_text + cbt_output
-         
+          full_cbt_sentence = cbt_text + cbt_output
         }
-        
-       
-        
-        result = hi
-        
-  			document.getElementById("response").textContent=result;
-		}
-	</script>
-<title>Treatment Note</title>
-</head>
-<body>
-
-
-  <label for="session">Session Focus:</label><br>
-  <textarea id="session" name="session" cols="50" rows="10"></textarea><br>
-  <br>
-  <h3> Therapeutic Intervention </h3>
-  <div>
-    <input type="checkbox" id="cbt" name="cbt"/>
-    <label for="cbt">CBT-based approach to help client</label>
-  </div>
-  	<select name="cbt_int" id="cbt_int" multiple>
-  		<option value="thoughts">identify and challenge irrational thoughts</option>
-  		<option value="replace">reframe negative thoughts</option>
-  		<option value="cope">develop coping strategies</option>
-	</select>
-
-  <div>
-    <input type="checkbox" id="dbt" name="dbt"/>
-    <label for="dbt">DBT-based approach to help client</label>
-   </div>
-    	<select name="dbt_int" id="dbt_int" multiple>
-  		<option value="emotion">learn emotional regulation strategies</option>
-  		<option value="interpersonal">enhance interpersonal effectiveness</option>
-  		<option value="distress">improve distress tolerance skills</option>
-	</select>
-  </div>
-  
-  <br>
-  <button onClick="myFunction()">Hello!!!</button>
-
-
-	<div id="response">
-    
-		
-	</div>
-
-
-</body>
+        result = full_cbt_sentence
+        document.getElementById("response").textContent = result;
+      }
+    </script>
+  </head>
+  <body>
+    <label for="session">Session Focus:</label>
+    <br>
+    <textarea id="session" name="session" cols="50" rows="10"></textarea>
+    <br>
+    <br>
+    <h3> Therapeutic Intervention </h3>
+    <div>
+      <input type="checkbox" id="cbt" name="cbt" />
+      <label for="cbt">CBT-based approach to help client</label>
+    </div>
+    <select name="cbt_int" id="cbt_int" multiple>
+      <option value="thoughts">identify and challenge irrational thoughts</option>
+      <option value="replace">reframe negative thoughts</option>
+      <option value="cope">develop coping strategies</option>
+    </select>
+    <div>
+      <input type="checkbox" id="dbt" name="dbt" />
+      <label for="dbt">DBT-based approach to help client</label>
+    </div>
+    <select name="dbt_int" id="dbt_int" multiple>
+      <option value="emotion">learn emotional regulation strategies</option>
+      <option value="interpersonal">enhance interpersonal effectiveness</option>
+      <option value="distress">improve distress tolerance skills</option>
+    </select>
+    </div>
+    <br>
+    <button onClick="myFunction()">Hello!!!</button>
+    <div id="response"></div>
+  </body>
 </html>
