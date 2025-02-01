@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script>
+		function myFunction() {
+  			document.getElementById("response").textContent="newtext";
+		}
+	</script>
 <title>Treatment Note</title>
 </head>
 <body>
@@ -32,8 +37,12 @@
   </div>
   
   <br>
-  <input type="submit" value="Submit">
+  <button onClick="myFunction()">Hello!!!</button>
 </form>
+
+	<div id="response">
+		
+	</div>
 
 
 </body>
