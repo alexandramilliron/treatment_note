@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Treatment Note</title>
+</head>
+<body>
+
+<form action="">
+  <label for="session">Session Focus:</label><br>
+  <textarea id="session" name="session" cols="50" rows="10"></textarea><br>
+  <br>
+  <h3> Therapeutic Intervention </h3>
+  <div>
+    <input type="checkbox" id="cbt" name="cbt"/>
+    <label for="cbt">CBT-based approach to help client</label>
+  </div>
+  	<select name="cbt_int" id="cbt_int" multiple>
+  		<option value="thoughts">identify and challenge irrational thoughts</option>
+  		<option value="replace">reframe negative thoughts</option>
+  		<option value="cope">develop coping strategies</option>
+	</select>
+
+  <div>
+    <input type="checkbox" id="dbt" name="dbt"/>
+    <label for="dbt">DBT-based approach to help client</label>
+   </div>
+    	<select name="dbt_int" id="dbt_int" multiple>
+  		<option value="emotion">learn emotional regulation strategies</option>
+  		<option value="interpersonal">enhance interpersonal effectiveness</option>
+  		<option value="distress">improve distress tolerance skills</option>
+	</select>
+  </div>
+  
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>
