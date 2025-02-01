@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<title>Treatment Note</title>
     <script>
       function myFunction() {
+        let session_focus = " " + document.getElementById("session").value
         let cbt_responses = document.getElementById("cbt_int").options
         let cbt_output = ""
         let is_cbt = document.getElementById("cbt").checked
@@ -14,12 +14,13 @@
               cbt_output += cbt_responses[i].text + ", "
             }
           }
-          full_cbt_sentence = cbt_text + cbt_output
+          full_cbt_sentence = " " + cbt_text + " " + cbt_output
         }
-        result = full_cbt_sentence
+        result = "Session Focus:" + session_focus + " " + "Therapeutic Intervention:" + full_cbt_sentence
         document.getElementById("response").textContent = result;
       }
     </script>
+    <title>Treatment Note</title>
   </head>
   <body>
     <label for="session">Session Focus:</label>
