@@ -3,7 +3,29 @@
 <head>
 	<script>
 		function myFunction() {
-  			document.getElementById("response").textContent="newtext";
+        	let cbt_responses = document.getElementById("cbt_int").options
+        let cbt_output = ""
+        let is_cbt = document.getElementById("cbt").checked
+        
+        if (is_cbt) {
+        
+        let cbt_text = document.getElementById("cbt").labels[0].textContext
+        
+          for (let i = 0; i < cbt_responses.length; i++) {
+              if (cbt_responses[i].selected) {
+                  cbt_output += cbt_responses[i].text + ", "
+              }   	
+          }
+          
+          hi = cbt_text + cbt_output
+         
+        }
+        
+       
+        
+        result = hi
+        
+  			document.getElementById("response").textContent=result;
 		}
 	</script>
 <title>Treatment Note</title>
@@ -41,6 +63,7 @@
 
 
 	<div id="response">
+    
 		
 	</div>
 
