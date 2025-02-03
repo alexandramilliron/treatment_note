@@ -3,13 +3,13 @@
   <head>
     <script>
       function myFunction() {
-        let session_focus = " " + document.getElementById("session").value
+        let session_focus = "Session Focus:" + " " + document.getElementById("session").value + " "
+
+        // CBT logic    
+        let is_cbt = document.getElementById("cbt").checked
         let cbt_responses = document.getElementById("cbt-int").options
         let cbt_output = ""
-        let is_cbt = document.getElementById("cbt").checked
-        let is_dbt = document.getElementById("dbt").checked
-        let dbt_responses = document.getElementById("dbt-int").options
-        let dbt_output = ""
+
         if (is_cbt) {
           let cbt_text = document.getElementById("cbt").labels[0].textContent
           for (let i = 0; i < cbt_responses.length; i++) {
@@ -17,8 +17,15 @@
               cbt_output += cbt_responses[i].text + ", "
             }
           }
+          
           full_cbt_sentence = " " + cbt_text + " " + cbt_output
         }
+        
+        // DBT logic
+        let is_dbt = document.getElementById("dbt").checked
+        let dbt_responses = document.getElementById("dbt-int").options
+        let dbt_output = ""
+
         if (is_dbt) {
           let dbt_text = document.getElementById("dbt").labels[0].textContent
           for (let i = 0; i < dbt_responses.length; i++) {
@@ -26,9 +33,12 @@
               dbt_output += dbt_responses[i].text + ", "
             }
           }
+
           full_dbt_sentence = " " + dbt_text + " " + dbt_output
         }
-        result = "Session Focus:" + session_focus + " " + "Therapeutic Intervention:" + full_cbt_sentence + full_dbt_sentence
+
+        result = session_focus + "Therapeutic Intervention:" + full_cbt_sentence + full_dbt_sentence
+        
         document.getElementById("response").textContent = result;
       }
     </script>
@@ -36,37 +46,40 @@
     <title>Treatment Note</title>
   </head>
   <body>
-    <label class="text-2xl font-bold" for="session">Session Focus</label>
-    <br>
-    <textarea id="session" name="session" class="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-30" cols="50" rows="10"></textarea>
-    <br>
-    <br>
-    <h3 class="text-2xl font-bold"> Therapeutic Intervention </h3>
-    <div class="sm:col-span-3">
-      <div>
-        <input type="checkbox" id="cbt" name="cbt" />
-        <label for="cbt">CBT-based approach to help client</label>
-      </div>
-      <div class="mt-2 grid grid-cols-1">
-        <select id="cbt-int" name="cbt-int" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
-          <option>identify and challenge irrational thoughts</option>
-          <option>reframe negative thoughts</option>
-          <option>improve distress tolerance sills</option>
-        </select>
-      </div>
+    <div class="pl-4">
+      <label class="text-2xl font-bold" for="session">Session Focus</label>
+      <br>
+      <textarea id="session" name="session" class="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-30" cols="50" rows="10"></textarea>
     </div>
-    <div class="sm:col-span-3">
-      <div>
-        <input type="checkbox" id="dbt" name="dbt" />
-        <label for="dbt">DBT-based approach to help client</label>
-      </div>
-      <div class="mt-2 grid grid-cols-1">
-        <select id="dbt-int" name="dbt-int" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
-          <option>learn emotional regulation strategies</option>
-          <option>enhance interpersonal effectiveness</option>
-          <option>improve distress tolerance skills</option>
-        </select>
-      </div>
+    <br><br>
+    <div class="pl-4">
+      <h3 class="text-2xl font-bold pb-2"> Therapeutic Intervention </h3>
+        <div class="sm:col-span-3">
+          <div>
+            <input type="checkbox" id="cbt" name="cbt" />
+            <label for="cbt">CBT-based approach to help client</label>
+          </div>
+          <div class="mt-2 grid grid-cols-1 pb-6">
+            <select id="cbt-int" name="cbt-int" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
+              <option>identify and challenge irrational thoughts</option>
+              <option>reframe negative thoughts</option>
+              <option>improve distress tolerance sills</option>
+            </select>
+          </div>
+        </div>
+        <div class="sm:col-span-3">
+          <div>
+            <input type="checkbox" id="dbt" name="dbt" />
+            <label for="dbt">DBT-based approach to help client</label>
+          </div>
+          <div class="mt-2 grid grid-cols-1 pb-6">
+            <select id="dbt-int" name="dbt-int" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
+              <option>learn emotional regulation strategies</option>
+              <option>enhance interpersonal effectiveness</option>
+              <option>improve distress tolerance skills</option>
+            </select>
+          </div>
+        </div>
     </div>
     <br>
     <button onClick="myFunction()" class="border-black border-2 rounded-2xl py-2 px-4 "> Hello </button>
