@@ -37,9 +37,45 @@
           full_dbt_sentence = " " + dbt_text + " " + dbt_output
         }
 
-        result = session_focus + "Therapeutic Intervention:" + full_cbt_sentence + full_dbt_sentence
+        // Follow-up logic
+        let follow_up = document.getElementById("follow-up").checked
+        let follow_up_responses = document.getElementById("follow-int").options
+        let follow_up_output = ""
+
+        if (follow_up) {
+          let follow_up_text = document.getElementById("follow-up").labels[0].textContent
+          for (let i = 0; i < follow_up_responses.length; i++) {
+            if (follow_up_responses[i].selected) {
+              follow_up_output += follow_up_responses[i].text + ", "
+            }
+          }
+
+          full_follow_up_sentence = " " + follow_up_text + " " + follow_up_output
+        }
+
+        // Implement logic
+        let implement = document.getElementById("implement").checked
+        let implement_responses = document.getElementById("implement-int").options
+        let implement_output = ""
+
+        if (implement) {
+          let implement_text = document.getElementById("implement").labels[0].textContent
+          for (let i = 0; i < implement_responses.length; i++) {
+            if (implemet_responses[i].selected) {
+              implement_output += implement_responses[i].text + ", "
+            }
+          }
+
+          full_implement_sentence = " " + implement_text + " " + implement_output
+        }
+
+        session_and_intervention_result = session_focus + "Therapeutic Intervention:" + full_cbt_sentence + full_dbt_sentence
+
+        planned_result = "Planned Intervention:" + full_follow_up_sentence + full_implement_sentence
         
-        document.getElementById("response").textContent = result;
+        document.getElementById("session-intervention").textContent = session_and_intervention_result;
+
+        document.getElementById("planned").textContent = planned_result;
       }
     </script>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -52,6 +88,7 @@
       <textarea id="session" name="session" class="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-30" cols="50" rows="10"></textarea>
     </div>
     <br><br>
+
     <div class="pl-4">
       <h3 class="text-2xl font-bold pb-2"> Therapeutic Intervention </h3>
         <div class="sm:col-span-3">
@@ -60,7 +97,7 @@
             <label for="cbt">CBT-based approach to help client</label>
           </div>
           <div class="mt-2 grid grid-cols-1 pb-6">
-            <select id="cbt-int" name="cbt-int" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
+            <select id="cbt-int" name="cbt-int" class="col-start-1 row-start-1 w-1/2 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
               <option>identify and challenge irrational thoughts</option>
               <option>reframe negative thoughts</option>
               <option>improve distress tolerance sills</option>
@@ -73,7 +110,7 @@
             <label for="dbt">DBT-based approach to help client</label>
           </div>
           <div class="mt-2 grid grid-cols-1 pb-6">
-            <select id="dbt-int" name="dbt-int" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
+            <select id="dbt-int" name="dbt-int" class="col-start-1 row-start-1 w-1/2 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
               <option>learn emotional regulation strategies</option>
               <option>enhance interpersonal effectiveness</option>
               <option>improve distress tolerance skills</option>
@@ -81,8 +118,43 @@
           </div>
         </div>
     </div>
+
+    <div class="pl-4">
+      <h3 class="text-2xl font-bold pb-2"> Planned Intervention </h3>
+        <div class="sm:col-span-3">
+          <div>
+            <input type="checkbox" id="follow-up" name="follow-up" />
+            <label for="follow-up">Continue to follow up</label>
+          </div>
+          <div class="mt-2 grid grid-cols-1 pb-6">
+            <select id="follow-int" name="follow-int" class="col-start-1 row-start-1 w-1/2 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
+              <option>on therapeutic homework assignments</option>
+              <option>on applying therapeutic insights</option>
+              <option>on situation at work</option>
+              <option>on situation with family</option>
+              <option>on progress with coping skills</option>
+              <option>to reinforce adaptive behaviors</option>
+            </select>
+          </div>
+        </div>
+        <div class="sm:col-span-3">
+          <div>
+            <input type="checkbox" id="implement" name="implement" />
+            <label for="implement">Continue to implement</label>
+          </div>
+          <div class="mt-2 grid grid-cols-1 pb-6">
+            <select id="implement-int" name="implement-int" class="col-start-1 row-start-1 w-1/2 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" multiple>
+              <option>CBT-based approaches</option>
+              <option>DBT-based approaches</option>
+              <option>mindfulness-based approaches</option>
+            </select>
+          </div>
+        </div>
+    </div>
+
     <br>
-    <button onClick="myFunction()" class="border-black border-2 rounded-2xl py-2 px-4 "> Hello </button>
-    <div id="response"></div>
+    <button onClick="myFunction()" class="border-black border-2 rounded-2xl py-2 px-4 "> Generate Note </button>
+    <div id="session-intervention"></div>
+    <div id="planned"></div>
   </body>
 </html>
