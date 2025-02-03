@@ -4,6 +4,10 @@
     <script>
       function myFunction() {
         let session_focus = "Session Focus:" + " " + document.getElementById("session").value + " "
+        let full_cbt_sentence = ""
+        let full_dbt_sentence = ""
+        let full_follow_up_sentence = ""
+        let full_implement_sentence = ""
 
         // CBT logic    
         let is_cbt = document.getElementById("cbt").checked
@@ -61,7 +65,7 @@
         if (implement) {
           let implement_text = document.getElementById("implement").labels[0].textContent
           for (let i = 0; i < implement_responses.length; i++) {
-            if (implemet_responses[i].selected) {
+            if (implement_responses[i].selected) {
               implement_output += implement_responses[i].text + ", "
             }
           }
@@ -69,9 +73,9 @@
           full_implement_sentence = " " + implement_text + " " + implement_output
         }
 
-        session_and_intervention_result = session_focus + "Therapeutic Intervention:" + full_cbt_sentence + full_dbt_sentence
+        let session_and_intervention_result = session_focus + "Therapeutic Intervention:" + full_cbt_sentence + full_dbt_sentence
 
-        planned_result = "Planned Intervention:" + full_follow_up_sentence + full_implement_sentence
+        let planned_result = "Planned Intervention:" + full_follow_up_sentence + full_implement_sentence
         
         document.getElementById("session-intervention").textContent = session_and_intervention_result;
 
@@ -153,8 +157,10 @@
     </div>
 
     <br>
-    <button onClick="myFunction()" class="border-black border-2 rounded-2xl py-2 px-4 "> Generate Note </button>
-    <div id="session-intervention"></div>
-    <div id="planned"></div>
+    <div class="pl-4">
+      <button onClick="myFunction()" class="border-black border-2 rounded-2xl py-2 px-4"> Generate Note </button>
+    </div>
+    <div id="session-intervention" class="pl-4 pb-2"></div>
+    <div id="planned" class="pl-4 pb-6"></div>
   </body>
 </html>
